@@ -73,12 +73,20 @@ public class steps {
         {
             //ChromeOptions options = new ChromeOptions();
 //			 options.addArguments("--version=110.0.5481.77"); // Replace with required version
-//            WebDriverManager.chromedriver().driverVersion("134.0.6998.119").setup();
+            WebDriverManager.chromedriver().driverVersion("134.0.6998.119").setup();
 //           driver=new ChromeDriver(options);
-            System.setProperty("webdriver.chrome.driver", "C:/Drivers/chromedriver_win32/chromedriver.exe");
-
             ChromeOptions options = new ChromeOptions();
+
+            options.addArguments("--remote-allow-origins=*");
+
+            // 🚨 Ensure that Chrome is NOT running in headless mode
+            options.setHeadless(false); // Ensure UI is visible
+
+//            options.setBinary("C://Program Files//Google//Chrome//Application//chrome.exe");
+//            System.setProperty("webdriver.chrome.driver", "C://Drivers//chromedriver_win32//chromedriver.exe");
+            //options.setBrowserVersion("134.0.6998.119");
             driver = new ChromeDriver(options);
+
 
         }
         else if (br.equals("firefox")) {
