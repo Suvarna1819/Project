@@ -71,10 +71,15 @@ public class steps {
     public void user_launch_browser() {
         if(br.equals("chrome"))
         {
-            ChromeOptions options = new ChromeOptions();
+            //ChromeOptions options = new ChromeOptions();
 //			 options.addArguments("--version=110.0.5481.77"); // Replace with required version
-            WebDriverManager.chromedriver().driverVersion("134.0.6998.119").setup();
-           driver=new ChromeDriver(options);
+//            WebDriverManager.chromedriver().driverVersion("134.0.6998.119").setup();
+//           driver=new ChromeDriver(options);
+            System.setProperty("webdriver.chrome.driver", "C:/Drivers/chromedriver_win32/chromedriver.exe");
+
+            ChromeOptions options = new ChromeOptions();
+            driver = new ChromeDriver(options);
+
         }
         else if (br.equals("firefox")) {
             driver = new FirefoxDriver();
