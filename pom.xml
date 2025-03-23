@@ -33,8 +33,32 @@
 						<includes>
 							<include>testRunner\TestRunner.java</include> <!-- Ensure this matches your runner class -->
 						</includes>
+						<testFailureIgnore>false</testFailureIgnore>
+						<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+<!--						<allureResultsDirectory>${project.build.directory}/allure-results</allureResultsDirectory>-->
 					</configuration>
 				</plugin>
+
+
+				<plugin>
+					<groupId>io.qameta.allure</groupId>
+					<artifactId>allure-maven</artifactId>
+					<version>2.9.0</version> <!-- Check for the latest version -->
+					<executions>
+						<execution>
+							<goals>
+								<goal>serve</goal>
+							</goals>
+
+							<configuration>
+								<!-- Specify the location for Allure results -->
+								<allureResultsDirectory>${project.build.directory}/allure-results</allureResultsDirectory>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -67,6 +91,18 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>2.20.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>2.13.9</version> <!-- Check for the latest version -->
+		</dependency>
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-junit5</artifactId>
+			<version>2.13.9</version> <!-- Use the latest version -->
 		</dependency>
 
 		<!-- Log4j API -->
